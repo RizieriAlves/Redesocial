@@ -1,0 +1,21 @@
+import React from "react";
+
+//CSS
+import styles from "./Home.module.css";
+
+function Home() {
+  return (
+    <>
+      <h1>Home</h1>
+      <h1>Home</h1>
+      <h1>Home</h1>
+      <h1>Home</h1>
+      <h1>Home</h1>
+      <h1>Home</h1>
+      <h1>Home</h1>
+      <h1>Home</h1>
+    </>
+  );
+}
+
+export default Home;
