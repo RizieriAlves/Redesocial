@@ -9,6 +9,7 @@ nav {
   left: 0;
   padding: 0px 10px;
   right: 0;
+  height: 100px;
 }
 
 nav ul {
@@ -99,35 +100,53 @@ nav ul li:has(.active) {
 }
 
 .central:hover .icon {
-  box-shadow: 0px 0px 50px white;
+  box-shadow: 0px 0px 10px 20px rgba(255, 255, 255, 0.651);
   transition: 0.5s;
 }
 
 .out {
   background-color: black;
   color: white;
-  position: absolute;
-  left: 46%;
-  transform: translateX(-50%);
-  height: 100%;
   font-size: 26px;
   padding: 0;
   margin: 0;
+  top: 0;
 }
 
 .new {
   position: absolute;
   left: 54%;
   height: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
   transform: translateX(-50%);
 }
 
+.home {
+  position: absolute;
+  left: 44%;
+}
+
 .newicon {
   padding: 0;
   margin: 0;
   color: white;
+}
+
+.home {
+  width: 50px;
+  height: 50px;
+  color: white;
+  background-color: transparent;
+}
+
+.home:hover .newicon,
+.new:hover .newicon,
+.out:hover {
+  box-shadow: 0px 0px 10px 20px rgb(255, 255, 255);
+  border-radius: 10px;
+  transition: 0.5s;
+  color: black;
+  background-color: rgb(255, 255, 255);
 }

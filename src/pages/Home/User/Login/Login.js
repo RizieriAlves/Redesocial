@@ -1,24 +1,25 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { useAuthentication } from "../../hooks/useAuthentication";
+import { useAuthValue } from "../../../../context/AuthContext";
+import { useAuthentication } from "../../../../hooks/useAuthentication";
 
 import styles from "./Login.module.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { auth, log } = useAuthentication();
+  const { auth, log, erro } = useAuthentication();
+  const { user, loadingUser, setLoadingUser } = useAuthValue();
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     async function login() {
       await log(email, password);
-      setTimeout(() => {
-        navigate("/");
-      }, 500);
+      if (!loadingUser) {
+        navigate("/timeline");
+      }
     }
     login();
   };
@@ -51,6 +52,7 @@ function Login() {
             id="senha"
           />
         </label>
+        {erro && <p>{erro}</p>}
         <button className={styles.button}>Entrar</button>
       </form>
     </>

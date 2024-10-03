@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Register.module.css";
 import { useState, useEffect, useCallback } from "react";
-import { useAuthentication } from "../../hooks/useAuthentication";
-import Loading from "../../Components/Loading";
+import { useAuthentication } from "../../../../hooks/useAuthentication";
+import Loading from "../../../../Components/Loading";
 
 function Register({ toggle }) {
   const [name, setName] = useState("");

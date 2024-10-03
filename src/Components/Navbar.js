@@ -1,9 +1,14 @@
 import React from "react";
 
 import { NavLink, Link } from "react-router-dom";
-import { FaCircleUser, FaArrowRightFromBracket, FaPlus } from "react-icons/fa6";
+import {
+  FaCircleUser,
+  FaArrowRightFromBracket,
+  FaPlus,
+  FaHouse,
+} from "react-icons/fa6";
 import styles from "./Navbar.module.css";
-import User from "../pages/User/User";
+import User from "../pages/Home/User/User";
 //permitirá o usuário deslogar:
 import { useAuthentication } from "../hooks/useAuthentication";
 
@@ -18,13 +23,15 @@ const Navbar = () => {
 
   return (
     <nav>
-      <NavLink to="/">
+      <NavLink to="/timeline">
         <span className={styles.blog}>Rize</span>
       </NavLink>
 
       {user ? (
         <>
-          <FaArrowRightFromBracket onClick={out} className={styles.out} />
+          <Link to="/timeline" className={styles.home}>
+            <FaHouse className={styles.newicon} />
+          </Link>
 
           <NavLink to="/Account" className={styles.central}>
             <FaCircleUser className={styles.icon} /> <h3>{user.displayName}</h3>
@@ -32,6 +39,10 @@ const Navbar = () => {
 
           <Link to="/newpost" className={styles.new}>
             <FaPlus className={styles.newicon} />
+          </Link>
+
+          <Link to="/user">
+            <FaArrowRightFromBracket onClick={out} className={styles.out} />
           </Link>
         </>
       ) : (
@@ -41,25 +52,6 @@ const Navbar = () => {
           </NavLink>
         </>
       )}
-
-      <ul>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? styles.active : null)}
-            to="/"
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? styles.active : null)}
-            to="/about"
-          >
-            About
-          </NavLink>
-        </li>
-      </ul>
     </nav>
   );
 };

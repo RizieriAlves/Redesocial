@@ -1,19 +1,12 @@
 import React from "react";
-
+import User from "./User/User";
 //CSS
 import styles from "./Home.module.css";
 
 function Home() {
   return (
     <>
-      <h1>Home</h1>
-      <h1>Home</h1>
-      <h1>Home</h1>
-      <h1>Home</h1>
-      <h1>Home</h1>
-      <h1>Home</h1>
-      <h1>Home</h1>
-      <h1>Home</h1>
+      <User />
     </>
   );
 }

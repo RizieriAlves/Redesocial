@@ -15,7 +15,6 @@ export const useAuthentication = () => {
 
   //Cleanup. Limpar resquicios de funções.
   const [cancelled, setCancelled] = useState(false);
-
   //permite autenticação.
   const auth = getAuth();
 
@@ -52,10 +51,15 @@ export const useAuthentication = () => {
 
   const log = async (email, password) => {
     try {
-      const { user } = signInWithEmailAndPassword(auth, email, password);
-      console.log(user);
-    } catch {
-      console.log("Erro no login.");
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      if (error.code === "auth/user-not-found") {
+        setErro("Usuário não encontrado");
+      } else if (error.code === "auth/wrong-password") {
+        setErro("Senha inválida");
+      } else {
+        setErro("Tente mais tarde");
+      }
     }
   };
 

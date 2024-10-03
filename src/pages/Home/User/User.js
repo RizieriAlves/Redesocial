@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./User.module.css";
 import { useState } from "react";
-import Login from "../Login/Login";
-import Register from "../Register/Register";
+import Login from "./Login/Login";
+import Register from "./Register/Register";
 import classNames from "classnames";
+
 function User() {
   const [login, setLogin] = useState(true);
 
