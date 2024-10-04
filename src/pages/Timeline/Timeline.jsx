@@ -33,12 +33,12 @@ function Timeline() {
         />
         <button>Pesquisar</button>
       </form>
-      <div>
+      <div className={styles.nopost}>
         {posts && posts.length === 0 && (
           <div>
-            <p>Não tem Post</p>
+            <p>Opa, ainda não temos nenhum Post</p>
             <Link to="/newpost">
-              <h1>Criar Post </h1>
+              <h1 className={styles.newpost}>Criar Post </h1>
             </Link>
           </div>
         )}
@@ -46,13 +46,21 @@ function Timeline() {
         <div className={styles.posts}>
           {posts &&
             posts.map((post) => {
+              console.log(post);
               return (
                 <div key={post.id} className={styles.post}>
                   <h2 className={styles.user}>{post.createdBy}</h2>
                   <h3>{post.text}</h3>
-                  <p className={styles.tags}>
-                    Tags: {post.tagsarray.join(", ")}
-                  </p>
+                  <div className={styles.tagdate}>
+                    <p className={styles.tags}>
+                      Tags: {post.tagsarray.join(", ")}
+                    </p>
+                    <p className={styles.tags}>
+                      {new Date(post.createdAt.seconds * 1000).toLocaleString(
+                        "pt-BR"
+                      )}
+                    </p>
+                  </div>
                 </div>
               );
             })}

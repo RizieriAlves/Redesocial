@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useQuery } from "../../hooks/useQuery";
-import styles from "./Search.module.css";
+import styles from "../Timeline/Timeline.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -40,12 +40,12 @@ function Search() {
         />
         <button>Pesquisar</button>
       </form>
-      <div>
+      <div className={styles.nopost}>
         {posts && posts.length === 0 && (
-          <div className={styles.nopost}>
-            <h1>Não temos Posts desse assunto...</h1>
+          <div>
+            <p>Opa, ainda não temos nenhum Post sobre isso</p>
             <Link to="/newpost">
-              <p className={styles.neon}>Criar Post sobre isso</p>
+              <h1 className={styles.newpost}>Criar Post </h1>
             </Link>
           </div>
         )}
@@ -57,9 +57,16 @@ function Search() {
                 <div key={post.id} className={styles.post}>
                   <h2 className={styles.user}>{post.createdBy}</h2>
                   <h3>{post.text}</h3>
-                  <p className={styles.tags}>
-                    Tags: {post.tagsarray.join(", ")}
-                  </p>
+                  <div className={styles.tagdate}>
+                    <p className={styles.tags}>
+                      Tags: {post.tagsarray.join(", ")}
+                    </p>
+                    <p className={styles.tags}>
+                      {new Date(post.createdAt.seconds * 1000).toLocaleString(
+                        "pt-BR"
+                      )}
+                    </p>
+                  </div>
                 </div>
               );
             })}

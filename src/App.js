@@ -5,7 +5,6 @@ import "./App.css";
 
 //Pages
 import Home from "./pages/Home/Home";
-import About from "./pages/About/About";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Login from "./pages/Home/User/Login/Login";
@@ -58,7 +57,6 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/" element={user ? <Timeline /> : <Home />} />
-              <Route path="/about" element={user ? <About /> : <Home />} />
               <Route path="/login" element={user ? <Login /> : <Home />} />
               <Route path="/account" element={user ? <Account /> : <Home />} />
               <Route path="/newpost" element={user ? <NewPost /> : <Home />} />
