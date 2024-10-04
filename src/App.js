@@ -20,6 +20,7 @@ import Account from "./pages/Account/Account";
 import NewPost from "./pages/NewPost/NewPost";
 import Timeline from "./pages/Timeline/Timeline";
 import gif from "./gg.gif";
+import Search from "./pages/Search/Search";
 
 //Components
 
@@ -56,7 +57,7 @@ function App() {
           <Navbar />
           <div className="container">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={user ? <Timeline /> : <Home />} />
               <Route path="/about" element={user ? <About /> : <Home />} />
               <Route path="/login" element={user ? <Login /> : <Home />} />
               <Route path="/account" element={user ? <Account /> : <Home />} />
@@ -70,6 +71,7 @@ function App() {
                 path="/timeline"
                 element={user ? <Timeline /> : <Home />}
               />
+              <Route path="/search" element={user ? <Search /> : <Home />} />
             </Routes>
           </div>
           <Footer />

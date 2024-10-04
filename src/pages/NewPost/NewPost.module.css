@@ -7,7 +7,6 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 30px;
   margin-top: 10px;
 }
 
@@ -21,6 +20,7 @@ textarea {
   min-height: 200px;
   text-wrap: wrap;
   padding: 10px;
+  margin-bottom: 20px;
 }
 
 .tags {
@@ -34,6 +34,7 @@ textarea {
   display: block;
   background-color: gray;
   margin-right: 20px;
+  flex-wrap: nowrap;
 }
 
 .addtag {
@@ -44,4 +45,35 @@ textarea {
   font-size: 20px;
   width: 100px;
   margin-left: auto;
+}
+
+.file {
+  display: none;
+}
+
+.iconfile {
+  font-size: 2em;
+  transform: translateY(15%);
+}
+
+.tagmedia {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.labelicon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.erro {
+  margin-top: 10px;
+  background-color: bisque;
+  padding: 10px;
+  font-size: 25px;
+  color: red;
 }

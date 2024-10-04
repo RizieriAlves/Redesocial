@@ -1,44 +1,51 @@
 import React from "react";
+import { useFetchDocuments } from "../../hooks/useFetchDocuments";
+import { useQuery } from "../../hooks/useQuery";
+import styles from "./Search.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import styles from "./Timeline.module.css";
 
-import { useFetchDocuments } from "../../hooks/useFetchDocuments";
-
-function Timeline() {
-  const [query, setQuery] = useState("");
-  const { documents: posts, loading, error } = useFetchDocuments("posts");
+function Search() {
+  const query = useQuery();
+  const search = query.get("q");
+  const [newquery, setNewQuery] = useState("");
   const navigate = useNavigate();
 
-  const search = (e) => {
+  const newsearch = (e) => {
     e.preventDefault();
 
-    if (query) {
-      return navigate(`/search?q=${query}`);
+    if (newquery) {
+      return navigate(`/search?q=${newquery}`);
     }
   };
 
+  const {
+    documents: posts,
+    loading,
+    error,
+  } = useFetchDocuments("posts", search);
+
   return (
     <div className={styles.container}>
-      <form className={styles.searchform} onSubmit={search}>
+      <form className={styles.searchform} onSubmit={newsearch}>
         <input
           type="search"
           name="busca"
           id="busca"
           placeholder="Busque por tags"
-          value={query}
+          value={newquery}
           onChange={(e) => {
-            setQuery(e.target.value);
+            setNewQuery(e.target.value);
           }}
         />
         <button>Pesquisar</button>
       </form>
       <div>
         {posts && posts.length === 0 && (
-          <div>
-            <p>Não tem Post</p>
+          <div className={styles.nopost}>
+            <h1>Não temos Posts desse assunto...</h1>
             <Link to="/newpost">
-              <h1>Criar Post </h1>
+              <p className={styles.neon}>Criar Post sobre isso</p>
             </Link>
           </div>
         )}
@@ -62,4 +69,4 @@ function Timeline() {
   );
 }
 
-export default Timeline;
+export default Search;
